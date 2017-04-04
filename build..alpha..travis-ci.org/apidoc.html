@@ -1,0 +1,788 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="http://github.com/mmckegg/json-query"
+
+    >json-query (v2.2.0)</a>
+</h1>
+<h4>Retrieves values from JSON objects for data binding. Offers params, nested queries, deep queries, custom reduce/filter functions and simple boolean logic. Browserify compatible.</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.json-query">module json-query</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.json-query.lastParent">
+            function <span class="apidocSignatureSpan">json-query.</span>lastParent
+            <span class="apidocSignatureSpan">(query)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.json-query.state">
+            function <span class="apidocSignatureSpan">json-query.</span>state
+            <span class="apidocSignatureSpan">(options, params, handleQuery)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">json-query.</span>state.prototype</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.json-query.state">module json-query.state</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.json-query.state.state">
+            function <span class="apidocSignatureSpan">json-query.</span>state
+            <span class="apidocSignatureSpan">(options, params, handleQuery)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.json-query.state.prototype">module json-query.state.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.json-query.state.prototype.addReference">
+            function <span class="apidocSignatureSpan">json-query.state.prototype.</span>addReference
+            <span class="apidocSignatureSpan">(ref)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.json-query.state.prototype.addReferences">
+            function <span class="apidocSignatureSpan">json-query.state.prototype.</span>addReferences
+            <span class="apidocSignatureSpan">(references)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.json-query.state.prototype.deepQuery">
+            function <span class="apidocSignatureSpan">json-query.state.prototype.</span>deepQuery
+            <span class="apidocSignatureSpan">(source, tokens, options, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.json-query.state.prototype.force">
+            function <span class="apidocSignatureSpan">json-query.state.prototype.</span>force
+            <span class="apidocSignatureSpan">(def)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.json-query.state.prototype.getFilter">
+            function <span class="apidocSignatureSpan">json-query.state.prototype.</span>getFilter
+            <span class="apidocSignatureSpan">(filterName)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.json-query.state.prototype.getGlobal">
+            function <span class="apidocSignatureSpan">json-query.state.prototype.</span>getGlobal
+            <span class="apidocSignatureSpan">(globalName)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.json-query.state.prototype.getLocal">
+            function <span class="apidocSignatureSpan">json-query.state.prototype.</span>getLocal
+            <span class="apidocSignatureSpan">(localName)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.json-query.state.prototype.getValue">
+            function <span class="apidocSignatureSpan">json-query.state.prototype.</span>getValue
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.json-query.state.prototype.getValueFrom">
+            function <span class="apidocSignatureSpan">json-query.state.prototype.</span>getValueFrom
+            <span class="apidocSignatureSpan">(value, item)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.json-query.state.prototype.getValues">
+            function <span class="apidocSignatureSpan">json-query.state.prototype.</span>getValues
+            <span class="apidocSignatureSpan">(values, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.json-query.state.prototype.resetCurrent">
+            function <span class="apidocSignatureSpan">json-query.state.prototype.</span>resetCurrent
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.json-query.state.prototype.setCurrent">
+            function <span class="apidocSignatureSpan">json-query.state.prototype.</span>setCurrent
+            <span class="apidocSignatureSpan">(key, value)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.json-query" id="apidoc.module.json-query">module json-query</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.json-query.lastParent" id="apidoc.element.json-query.lastParent">
+        function <span class="apidocSignatureSpan">json-query.</span>lastParent
+        <span class="apidocSignatureSpan">(query)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">lastParent = function (query) {
+  var last = query.parents[query.parents.length - 1]
+  if (last) {
+    return last.value
+  } else {
+    return null
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.json-query.state" id="apidoc.element.json-query.state">
+        function <span class="apidocSignatureSpan">json-query.</span>state
+        <span class="apidocSignatureSpan">(options, params, handleQuery)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function State(options, params, handleQuery){
+
+  options = options || {}
+
+  //this.options = options
+  this.handleQuery = handleQuery
+  this.options = options
+  this.locals = this.options.locals || {}
+  this.globals = this.options.globals || {}
+  this.rootContext = firstNonNull(options.data, options.rootContext, options.context, options.source)
+  this.parent = options.parent
+  this.override = options.override
+  this.filters = options.filters || {}
+  this.params = params || options.params || []
+  this.context = firstNonNull(options.currentItem, options.context, options.source)
+  this.currentItem = firstNonNull(this.context, options.rootContext, options.data)
+  this.currentKey = null
+  this.currentReferences = []
+  this.currentParents = []
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.json-query.state" id="apidoc.module.json-query.state">module json-query.state</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.json-query.state.state" id="apidoc.element.json-query.state.state">
+        function <span class="apidocSignatureSpan">json-query.</span>state
+        <span class="apidocSignatureSpan">(options, params, handleQuery)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function State(options, params, handleQuery){
+
+  options = options || {}
+
+  //this.options = options
+  this.handleQuery = handleQuery
+  this.options = options
+  this.locals = this.options.locals || {}
+  this.globals = this.options.globals || {}
+  this.rootContext = firstNonNull(options.data, options.rootContext, options.context, options.source)
+  this.parent = options.parent
+  this.override = options.override
+  this.filters = options.filters || {}
+  this.params = params || options.params || []
+  this.context = firstNonNull(options.currentItem, options.context, options.source)
+  this.currentItem = firstNonNull(this.context, options.rootContext, options.data)
+  this.currentKey = null
+  this.currentReferences = []
+  this.currentParents = []
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.json-query.state.prototype" id="apidoc.module.json-query.state.prototype">module json-query.state.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.json-query.state.prototype.addReference" id="apidoc.element.json-query.state.prototype.addReference">
+        function <span class="apidocSignatureSpan">json-query.state.prototype.</span>addReference
+        <span class="apidocSignatureSpan">(ref)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">addReference = function (ref){
+  if (ref instanceof Object &#x26;&#x26; !~this.currentReferences.indexOf(ref)){
+    this.currentReferences.push(ref)
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+// flush
+handleToken(null, state)
+
+// set databind hooks
+if (state.currentItem instanceof Object) {
+  state.<span class="apidocCodeKeywordSpan">addReference</span>(state.currentItem)
+} else {
+  var parentObject = getLastParentObject(state.currentParents)
+  if (parentObject) {
+    state.addReference(parentObject)
+  }
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.json-query.state.prototype.addReferences" id="apidoc.element.json-query.state.prototype.addReferences">
+        function <span class="apidocSignatureSpan">json-query.state.prototype.</span>addReferences
+        <span class="apidocSignatureSpan">(references)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">addReferences = function (references){
+  if (references){
+    references.forEach(this.addReference, this)
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  } else if (value._sub){
+
+    var options = copy(this.options)
+    options.force = null
+    options.currentItem = item
+
+    var result = this.handleQuery(value._sub, options, this.params)
+    this.<span class="apidocCodeKeywordSpan">addReferences</span>(result.references)
+    return result.value
+
+  } else {
+    return value
+  }
+},
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.json-query.state.prototype.deepQuery" id="apidoc.element.json-query.state.prototype.deepQuery">
+        function <span class="apidocSignatureSpan">json-query.state.prototype.</span>deepQuery
+        <span class="apidocSignatureSpan">(source, tokens, options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">deepQuery = function (source, tokens, options, callback){
+  var keys = Object.keys(source)
+
+  for (var key in source){
+    if (key in source){
+
+      var options = copy(this.options)
+      options.currentItem = source[key]
+
+      var result = this.handleQuery(tokens, options, this.params)
+
+      if (result.value){
+        return result
+      }
+    }
+  }
+
+  return null
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    }
+  } else if (token.deep) {
+    if (state.currentItem) {
+if (token.deep.length === 0) {
+  return
+}
+
+var result = state.<span class="apidocCodeKeywordSpan">deepQuery</span>(state.currentItem, token.deep, state.options)
+if (result) {
+  state.setCurrent(result.key, result.value)
+  for (var i = 0; i &#x3c; result.parents.length; i++) {
+    state.currentParents.push(result.parents[i])
+  }
+} else {
+  state.setCurrent(null, null)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.json-query.state.prototype.force" id="apidoc.element.json-query.state.prototype.force">
+        function <span class="apidocSignatureSpan">json-query.state.prototype.</span>force
+        <span class="apidocSignatureSpan">(def)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">force = function (def){
+  var parent = this.currentParents[this.currentParents.length-1]
+  if (!this.currentItem &#x26;&#x26; parent &#x26;&#x26; (this.currentKey != null)){
+    this.currentItem = def || {}
+    parent.value[this.currentKey] = this.currentItem
+  }
+  return !!this.currentItem
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+function handleToken (token, state) {
+// state: setCurrent, getValue, getValues, resetCurrent, deepQuery, rootContext, currentItem, currentKey, options, filters
+
+if (token == null) {
+  // process end of query
+  if (!state.currentItem &#x26;&#x26; state.options.force) {
+    state.<span class="apidocCodeKeywordSpan">force</span>(state.options.force)
+  }
+} else if (token.values) {
+  if (state.currentItem) {
+    var keys = Object.keys(state.currentItem)
+    var values = []
+    keys.forEach(function (key) {
+      if (token.deep &#x26;&#x26; Array.isArray(state.currentItem[key])) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.json-query.state.prototype.getFilter" id="apidoc.element.json-query.state.prototype.getFilter">
+        function <span class="apidocSignatureSpan">json-query.state.prototype.</span>getFilter
+        <span class="apidocSignatureSpan">(filterName)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getFilter = function (filterName){
+  if (~filterName.indexOf(&#x27;/&#x27;)){
+    var result = null
+    var filterParts = filterName.split(&#x27;/&#x27;)
+
+    for (var i=0;i&#x3c;filterParts.length;i++){
+      var part = filterParts[i]
+      if (i == 0){
+        result = this.filters[part]
+      } else if (result &#x26;&#x26; result[part]){
+        result = result[part]
+      }
+    }
+
+    return result
+  } else {
+    return this.filters[filterName]
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  if (typeof helper === &#x27;function&#x27;) {
+    // function(input, args...)
+    var values = state.getValues(token.args || [])
+    var result = helper.apply(state.options, [state.currentItem].concat(values))
+    state.setCurrent(null, result)
+  } else {
+    // fallback to old filters
+    var filter = state.<span class="apidocCodeKeywordSpan">getFilter</span>(token.filter)
+    if (typeof filter === &#x27;function&#x27;) {
+      var values = state.getValues(token.args || [])
+      var result = filter.call(state.options, state.currentItem, {args: values, state: state, data: state.rootContext})
+      state.setCurrent(null, result)
+    }
+  }
+} else if (token.deep) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.json-query.state.prototype.getGlobal" id="apidoc.element.json-query.state.prototype.getGlobal">
+        function <span class="apidocSignatureSpan">json-query.state.prototype.</span>getGlobal
+        <span class="apidocSignatureSpan">(globalName)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getGlobal = function (globalName){
+  if (~globalName.indexOf(&#x27;/&#x27;)){
+    var result = null
+    var parts = globalName.split(&#x27;/&#x27;)
+
+    for (var i=0;i&#x3c;parts.length;i++){
+      var part = parts[i]
+      if (i == 0){
+        result = this.globals[part]
+      } else if (result &#x26;&#x26; result[part]){
+        result = result[part]
+      }
+    }
+
+    return result
+  } else {
+    return this.globals[globalName]
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  if (state.currentItem) {
+    return true
+  } else {
+    state.resetCurrent()
+    state.setCurrent(null, state.context)
+  }
+} else if (token.filter) {
+  var helper = state.getLocal(token.filter) || state.<span class="apidocCodeKeywordSpan">getGlobal</span>(token.filter)
+  if (typeof helper === &#x27;function&#x27;) {
+    // function(input, args...)
+    var values = state.getValues(token.args || [])
+    var result = helper.apply(state.options, [state.currentItem].concat(values))
+    state.setCurrent(null, result)
+  } else {
+    // fallback to old filters
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.json-query.state.prototype.getLocal" id="apidoc.element.json-query.state.prototype.getLocal">
+        function <span class="apidocSignatureSpan">json-query.state.prototype.</span>getLocal
+        <span class="apidocSignatureSpan">(localName)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getLocal = function (localName){
+  if (~localName.indexOf(&#x27;/&#x27;)){
+    var result = null
+    var parts = localName.split(&#x27;/&#x27;)
+
+    for (var i=0;i&#x3c;parts.length;i++){
+      var part = parts[i]
+      if (i == 0){
+        result = this.locals[part]
+      } else if (result &#x26;&#x26; result[part]){
+        result = result[part]
+      }
+    }
+
+    return result
+  } else {
+    return this.locals[localName]
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  if (state.currentItem) {
+    return true
+  } else {
+    state.resetCurrent()
+    state.setCurrent(null, state.context)
+  }
+} else if (token.filter) {
+  var helper = state.<span class="apidocCodeKeywordSpan">getLocal</span>(token.filter) || state.getGlobal(token.filter)
+  if (typeof helper === &#x27;function&#x27;) {
+    // function(input, args...)
+    var values = state.getValues(token.args || [])
+    var result = helper.apply(state.options, [state.currentItem].concat(values))
+    state.setCurrent(null, result)
+  } else {
+    // fallback to old filters
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.json-query.state.prototype.getValue" id="apidoc.element.json-query.state.prototype.getValue">
+        function <span class="apidocSignatureSpan">json-query.state.prototype.</span>getValue
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getValue = function (value) {
+  return this.getValueFrom(value, null)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+      }
+    })
+    state.setCurrent(keys, values)
+  } else {
+    state.setCurrent(keys, [])
+  }
+} else if (token.get) {
+  var key = state.<span class="apidocCodeKeywordSpan">getValue</span>(token.get)
+  if (shouldOverride(state, key)) {
+    state.setCurrent(key, state.override[key])
+  } else {
+    if (state.currentItem || (state.options.force &#x26;&#x26; state.force({}))) {
+      if (isDeepAccessor(state.currentItem, key) || token.multiple) {
+        var values = state.currentItem.map(function (item) {
+          return item[key]
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.json-query.state.prototype.getValueFrom" id="apidoc.element.json-query.state.prototype.getValueFrom">
+        function <span class="apidocSignatureSpan">json-query.state.prototype.</span>getValueFrom
+        <span class="apidocSignatureSpan">(value, item)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getValueFrom = function (value, item) {
+  if (value._param != null){
+    return this.params[value._param]
+  } else if (value._sub){
+
+    var options = copy(this.options)
+    options.force = null
+    options.currentItem = item
+
+    var result = this.handleQuery(value._sub, options, this.params)
+    this.addReferences(result.references)
+    return result.value
+
+  } else {
+    return value
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+if (part.op === &#x27;:&#x27;) {
+  var key = state.getValue(part.select[0])
+  return {
+    func: function (item) {
+      if (key) {
+        item = item[key]
+      }
+      return state.<span class="apidocCodeKeywordSpan">getValueFrom</span>(part.select[1], item)
+    },
+    negate: part.negate,
+    booleanOp: part.booleanOp
+  }
+} else {
+  var selector = state.getValues(part.select)
+  if (!state.options.allowRegexp &#x26;&#x26; part.op === &#x27;~&#x27; &#x26;&#x26; selector[1] instanceof RegExp) throw new Error
+(&#x27;options.allowRegexp is not enabled.&#x27;)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.json-query.state.prototype.getValues" id="apidoc.element.json-query.state.prototype.getValues">
+        function <span class="apidocSignatureSpan">json-query.state.prototype.</span>getValues
+        <span class="apidocSignatureSpan">(values, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getValues = function (values, callback){
+  return values.map(this.getValue, this)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+      }
+      return state.getValueFrom(part.select[1], item)
+    },
+    negate: part.negate,
+    booleanOp: part.booleanOp
+  }
+} else {
+  var selector = state.<span class="apidocCodeKeywordSpan">getValues</span>(part.select)
+  if (!state.options.allowRegexp &#x26;&#x26; part.op === &#x27;~&#x27; &#x26;&#x26; selector[1] instanceof RegExp) throw new Error
+(&#x27;options.allowRegexp is not enabled.&#x27;)
+  return {
+    key: selector[0],
+    value: selector[1],
+    negate: part.negate,
+    booleanOp: part.booleanOp,
+    op: part.op
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.json-query.state.prototype.resetCurrent" id="apidoc.element.json-query.state.prototype.resetCurrent">
+        function <span class="apidocSignatureSpan">json-query.state.prototype.</span>resetCurrent
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">resetCurrent = function (){
+  this.currentItem = null
+  this.currentKey = null
+  this.currentParents = []
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        state.setCurrent(null, null)
+      }
+    }
+  } else {
+    state.setCurrent(null, null)
+  }
+} else if (token.root) {
+  state.<span class="apidocCodeKeywordSpan">resetCurrent</span>()
+  if (token.args &#x26;&#x26; token.args.length) {
+    state.setCurrent(null, state.getValue(token.args[0]))
+  } else {
+    state.setCurrent(null, state.rootContext)
+  }
+} else if (token.parent) {
+  state.resetCurrent()
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.json-query.state.prototype.setCurrent" id="apidoc.element.json-query.state.prototype.setCurrent">
+        function <span class="apidocSignatureSpan">json-query.state.prototype.</span>setCurrent
+        <span class="apidocSignatureSpan">(key, value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setCurrent = function (key, value){
+  if (this.currentItem || this.currentKey || this.currentParents.length&#x3e;0){
+    this.currentParents.push({key: this.currentKey, value: this.currentItem})
+  }
+  this.currentItem = value
+  this.currentKey = key
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        state.currentItem[key].forEach(function (item) {
+          values.push(item)
+        })
+      } else {
+        values.push(state.currentItem[key])
+      }
+    })
+    state.<span class="apidocCodeKeywordSpan">setCurrent</span>(keys, values)
+  } else {
+    state.setCurrent(keys, [])
+  }
+} else if (token.get) {
+  var key = state.getValue(token.get)
+  if (shouldOverride(state, key)) {
+    state.setCurrent(key, state.override[key])
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
