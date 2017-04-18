@@ -51,7 +51,7 @@
 
         href="http://github.com/mmckegg/json-query"
 
-    >json-query (v2.2.0)</a>
+    >json-query (v2.2.2)</a>
 </h1>
 <h4>Retrieves values from JSON objects for data binding. Offers params, nested queries, deep queries, custom reduce/filter functions and simple boolean logic. Browserify compatible.</h4>
 <div class="apidocSectionDiv"><a
@@ -60,6 +60,33 @@
 ><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.json-query">module json-query</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.json-query.json-query">
+            function <span class="apidocSignatureSpan"></span>json-query
+            <span class="apidocSignatureSpan">(query, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.json-query.depth_split">
+            function <span class="apidocSignatureSpan">json-query.</span>depth_split
+            <span class="apidocSignatureSpan">(text, delimiter, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.json-query.force_parent">
+            function <span class="apidocSignatureSpan">json-query.</span>force_parent
+            <span class="apidocSignatureSpan">(query, value)</span>
+            </a>
+
+        </li>
 
         <li>
 
@@ -81,7 +108,64 @@
 
         <li>
 
+            <a class="apidocElementLiA" href="#apidoc.element.json-query.toString">
+            function <span class="apidocSignatureSpan">json-query.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.json-query.tokenize">
+            function <span class="apidocSignatureSpan">json-query.</span>tokenize
+            <span class="apidocSignatureSpan">(query, shouldAssignParamIds)</span>
+            </a>
+
+        </li>
+
+        <li>
+
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">json-query.</span>state.prototype</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.json-query.depth_split">module json-query.depth_split</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.json-query.depth_split.depth_split">
+            function <span class="apidocSignatureSpan">json-query.</span>depth_split
+            <span class="apidocSignatureSpan">(text, delimiter, opts)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.json-query.force_parent">module json-query.force_parent</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.json-query.force_parent.force_parent">
+            function <span class="apidocSignatureSpan">json-query.</span>force_parent
+            <span class="apidocSignatureSpan">(query, value)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.json-query.lastParent">module json-query.lastParent</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.json-query.lastParent.lastParent">
+            function <span class="apidocSignatureSpan">json-query.</span>lastParent
+            <span class="apidocSignatureSpan">(query)</span>
+            </a>
 
         </li>
 
@@ -212,10 +296,148 @@
 
     </ol></li>
 
+    <li class="apidocModuleLi"><a href="#apidoc.module.json-query.toString">module json-query.toString</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.json-query.toString.toString">
+            function <span class="apidocSignatureSpan">json-query.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.json-query.tokenize">module json-query.tokenize</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.json-query.tokenize.tokenize">
+            function <span class="apidocSignatureSpan">json-query.</span>tokenize
+            <span class="apidocSignatureSpan">(query, shouldAssignParamIds)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
 </ol></div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.json-query" id="apidoc.module.json-query">module json-query</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.json-query.json-query" id="apidoc.element.json-query.json-query">
+        function <span class="apidocSignatureSpan"></span>json-query
+        <span class="apidocSignatureSpan">(query, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function jsonQuery(query, options) {
+
+  // extract params for [&#x27;test[param=?]&#x27;, &#x27;value&#x27;] type queries
+  var params = options &#x26;&#x26; options.params || null
+  if (Array.isArray(query)) {
+    params = query.slice(1)
+    query = query[0]
+  }
+
+  if (!tokenizedCache[query]) {
+    tokenizedCache[query] = tokenize(query, true)
+  }
+
+  return handleQuery(tokenizedCache[query], options, params)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.json-query.depth_split" id="apidoc.element.json-query.depth_split">
+        function <span class="apidocSignatureSpan">json-query.</span>depth_split
+        <span class="apidocSignatureSpan">(text, delimiter, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function depthSplit(text, delimiter, opts) {
+  var max = opts &#x26;&#x26; opts.max || Infinity
+  var includeDelimiters = opts &#x26;&#x26; opts.includeDelimiters || false
+
+  var depth = 0
+  var start = 0
+  var result = []
+  var zones = []
+
+  text.replace(/([\[\(\{])|([\]\)\}])/g, function (current, open, close, offset) {
+    if (open) {
+      if (depth === 0) {
+        zones.push([start, offset])
+      }
+      depth += 1
+    } else if (close) {
+      depth -= 1
+      if (depth === 0) {
+        start = offset + current.length
+      }
+    }
+  })
+
+  if (depth === 0 &#x26;&#x26; start &#x3c; text.length) {
+    zones.push([start, text.length])
+  }
+
+  start = 0
+
+  for (var i = 0; i &#x3c; zones.length &#x26;&#x26; max &#x3e; 0; i++) {
+    for (
+      var pos = zones[i][0], match = delimiter.exec(text.slice(pos, zones[i][1]));
+      match &#x26;&#x26; max &#x3e; 1;
+      pos += match.index + match[0].length, start = pos, match = delimiter.exec(text.slice(pos, zones[i][1]))
+    ) {
+      result.push(text.slice(start, match.index + pos))
+      if (includeDelimiters) {
+        result.push(match[0])
+      }
+      max -= 1
+    }
+  }
+
+  if (start &#x3c; text.length) {
+    result.push(text.slice(start))
+  }
+
+  return result
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.json-query.force_parent" id="apidoc.element.json-query.force_parent">
+        function <span class="apidocSignatureSpan">json-query.</span>force_parent
+        <span class="apidocSignatureSpan">(query, value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function forceParent(query, value){
+  var last = query.parents[query.parents.length - 1]
+  var parentLast = query.parents[query.parents.length - 2]
+  if (last){
+    if (last.value){
+      return last.value
+    } else if (parentLast){
+      parentLast.value[last.key] = value
+      return value
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
 
 
     <h2>
@@ -269,6 +491,284 @@
     </ul>
 
 
+
+    <h2>
+        <a href="#apidoc.element.json-query.toString" id="apidoc.element.json-query.toString">
+        function <span class="apidocSignatureSpan">json-query.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return text;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.json-query.tokenize" id="apidoc.element.json-query.tokenize">
+        function <span class="apidocSignatureSpan">json-query.</span>tokenize
+        <span class="apidocSignatureSpan">(query, shouldAssignParamIds)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">tokenize = function (query, shouldAssignParamIds){
+  if (!query) return []
+
+  var result = []
+    , prevChar, char
+    , nextChar = query.charAt(0)
+    , bStart = 0
+    , bEnd = 0
+    , partOffset = 0
+    , pos = 0
+    , depth = 0
+    , mode = &#x27;get&#x27;
+    , deepQuery = null
+
+  // if query contains params then number them
+  if (shouldAssignParamIds){
+    query = assignParamIds(query)
+  }
+
+  var tokens = {
+    &#x27;.&#x27;: {mode: &#x27;get&#x27;},
+    &#x27;:&#x27;: {mode: &#x27;filter&#x27;},
+    &#x27;|&#x27;: {handle: &#x27;or&#x27;},
+    &#x27;[&#x27;: {open: &#x27;select&#x27;},
+    &#x27;]&#x27;: {close: &#x27;select&#x27;},
+    &#x27;{&#x27;: {open: &#x27;meta&#x27;},
+    &#x27;}&#x27;: {close: &#x27;meta&#x27;},
+    &#x27;(&#x27;: {open: &#x27;args&#x27;},
+    &#x27;)&#x27;: {close: &#x27;args&#x27;}
+  }
+
+  function push(item){
+    if (deepQuery){
+      deepQuery.push(item)
+    } else {
+      result.push(item)
+    }
+  }
+
+  var handlers = {
+    get: function(buffer){
+      var trimmed = typeof buffer === &#x27;string&#x27; ? buffer.trim() : null
+      if (trimmed){
+        push({get:trimmed})
+      }
+    },
+    select: function(buffer){
+      if (buffer){
+        push(tokenizeSelect(buffer))
+      } else {
+        // deep query override
+        var x = {deep: []}
+        result.push(x)
+        deepQuery = x.deep
+      }
+    },
+    filter: function(buffer){
+      if (buffer){
+        push({filter:buffer.trim()})
+      }
+    },
+    or: function(){
+      deepQuery = null
+      result.push({or:true})
+      partOffset = i + 1
+    },
+    args: function(buffer){
+      var args = tokenizeArgs(buffer)
+      result[result.length-1].args = args
+    }
+  }
+
+  function handleBuffer(){
+    var buffer = query.slice(bStart, bEnd)
+    if (handlers[mode]){
+      handlers[mode](buffer)
+    }
+    mode = &#x27;get&#x27;
+    bStart = bEnd + 1
+  }
+
+  for (var i = 0;i &#x3c; query.length;i++){
+
+    // update char values
+    prevChar = char; char = nextChar; nextChar = query.charAt(i + 1);
+    pos = i - partOffset
+
+    // root query check
+    if (pos === 0 &#x26;&#x26; (char !== &#x27;:&#x27; &#x26;&#x26; char !== &#x27;.&#x27;)){
+      result.push({root:true})
+    }
+
+    // parent query check
+    if (pos === 0 &#x26;&#x26; (char === &#x27;.&#x27; &#x26;&#x26; nextChar === &#x27;.&#x27;)){
+      result.push({parent:true})
+    }
+
+    var token = tokens[char]
+    if (token){
+
+      // set mode
+      if (depth === 0 &#x26;&#x26; (token.mode || token.open)){
+        handleBuffer()
+        mode = token.mode || token.open
+      }
+
+      if (depth === 0 &#x26;&#x26; token.handle){
+        handleBuffer()
+        handlers[token.handle]()
+      }
+
+      if (token.open){
+        depth += 1
+      } else if (token.close){
+        depth -= 1
+      }
+
+      // reset mode to get
+      if (depth === 0 &#x26;&#x26; token.close){
+        handleBuffer()
+      }
+
+    }
+
+    bEnd = i + 1
+
+  }
+
+  handleBuffer()
+  return result
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.json-query.depth_split" id="apidoc.module.json-query.depth_split">module json-query.depth_split</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.json-query.depth_split.depth_split" id="apidoc.element.json-query.depth_split.depth_split">
+        function <span class="apidocSignatureSpan">json-query.</span>depth_split
+        <span class="apidocSignatureSpan">(text, delimiter, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function depthSplit(text, delimiter, opts) {
+  var max = opts &#x26;&#x26; opts.max || Infinity
+  var includeDelimiters = opts &#x26;&#x26; opts.includeDelimiters || false
+
+  var depth = 0
+  var start = 0
+  var result = []
+  var zones = []
+
+  text.replace(/([\[\(\{])|([\]\)\}])/g, function (current, open, close, offset) {
+    if (open) {
+      if (depth === 0) {
+        zones.push([start, offset])
+      }
+      depth += 1
+    } else if (close) {
+      depth -= 1
+      if (depth === 0) {
+        start = offset + current.length
+      }
+    }
+  })
+
+  if (depth === 0 &#x26;&#x26; start &#x3c; text.length) {
+    zones.push([start, text.length])
+  }
+
+  start = 0
+
+  for (var i = 0; i &#x3c; zones.length &#x26;&#x26; max &#x3e; 0; i++) {
+    for (
+      var pos = zones[i][0], match = delimiter.exec(text.slice(pos, zones[i][1]));
+      match &#x26;&#x26; max &#x3e; 1;
+      pos += match.index + match[0].length, start = pos, match = delimiter.exec(text.slice(pos, zones[i][1]))
+    ) {
+      result.push(text.slice(start, match.index + pos))
+      if (includeDelimiters) {
+        result.push(match[0])
+      }
+      max -= 1
+    }
+  }
+
+  if (start &#x3c; text.length) {
+    result.push(text.slice(start))
+  }
+
+  return result
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.json-query.force_parent" id="apidoc.module.json-query.force_parent">module json-query.force_parent</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.json-query.force_parent.force_parent" id="apidoc.element.json-query.force_parent.force_parent">
+        function <span class="apidocSignatureSpan">json-query.</span>force_parent
+        <span class="apidocSignatureSpan">(query, value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function forceParent(query, value){
+  var last = query.parents[query.parents.length - 1]
+  var parentLast = query.parents[query.parents.length - 2]
+  if (last){
+    if (last.value){
+      return last.value
+    } else if (parentLast){
+      parentLast.value[last.key] = value
+      return value
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.json-query.lastParent" id="apidoc.module.json-query.lastParent">module json-query.lastParent</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.json-query.lastParent.lastParent" id="apidoc.element.json-query.lastParent.lastParent">
+        function <span class="apidocSignatureSpan">json-query.</span>lastParent
+        <span class="apidocSignatureSpan">(query)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">lastParent = function (query) {
+  var last = query.parents[query.parents.length - 1]
+  if (last) {
+    return last.value
+  } else {
+    return null
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
 
 
 </div>
@@ -775,6 +1275,172 @@ if (part.op === &#x27;:&#x27;) {
   if (shouldOverride(state, key)) {
     state.setCurrent(key, state.override[key])
 ...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.json-query.toString" id="apidoc.module.json-query.toString">module json-query.toString</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.json-query.toString.toString" id="apidoc.element.json-query.toString.toString">
+        function <span class="apidocSignatureSpan">json-query.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.json-query.tokenize" id="apidoc.module.json-query.tokenize">module json-query.tokenize</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.json-query.tokenize.tokenize" id="apidoc.element.json-query.tokenize.tokenize">
+        function <span class="apidocSignatureSpan">json-query.</span>tokenize
+        <span class="apidocSignatureSpan">(query, shouldAssignParamIds)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">tokenize = function (query, shouldAssignParamIds){
+  if (!query) return []
+
+  var result = []
+    , prevChar, char
+    , nextChar = query.charAt(0)
+    , bStart = 0
+    , bEnd = 0
+    , partOffset = 0
+    , pos = 0
+    , depth = 0
+    , mode = &#x27;get&#x27;
+    , deepQuery = null
+
+  // if query contains params then number them
+  if (shouldAssignParamIds){
+    query = assignParamIds(query)
+  }
+
+  var tokens = {
+    &#x27;.&#x27;: {mode: &#x27;get&#x27;},
+    &#x27;:&#x27;: {mode: &#x27;filter&#x27;},
+    &#x27;|&#x27;: {handle: &#x27;or&#x27;},
+    &#x27;[&#x27;: {open: &#x27;select&#x27;},
+    &#x27;]&#x27;: {close: &#x27;select&#x27;},
+    &#x27;{&#x27;: {open: &#x27;meta&#x27;},
+    &#x27;}&#x27;: {close: &#x27;meta&#x27;},
+    &#x27;(&#x27;: {open: &#x27;args&#x27;},
+    &#x27;)&#x27;: {close: &#x27;args&#x27;}
+  }
+
+  function push(item){
+    if (deepQuery){
+      deepQuery.push(item)
+    } else {
+      result.push(item)
+    }
+  }
+
+  var handlers = {
+    get: function(buffer){
+      var trimmed = typeof buffer === &#x27;string&#x27; ? buffer.trim() : null
+      if (trimmed){
+        push({get:trimmed})
+      }
+    },
+    select: function(buffer){
+      if (buffer){
+        push(tokenizeSelect(buffer))
+      } else {
+        // deep query override
+        var x = {deep: []}
+        result.push(x)
+        deepQuery = x.deep
+      }
+    },
+    filter: function(buffer){
+      if (buffer){
+        push({filter:buffer.trim()})
+      }
+    },
+    or: function(){
+      deepQuery = null
+      result.push({or:true})
+      partOffset = i + 1
+    },
+    args: function(buffer){
+      var args = tokenizeArgs(buffer)
+      result[result.length-1].args = args
+    }
+  }
+
+  function handleBuffer(){
+    var buffer = query.slice(bStart, bEnd)
+    if (handlers[mode]){
+      handlers[mode](buffer)
+    }
+    mode = &#x27;get&#x27;
+    bStart = bEnd + 1
+  }
+
+  for (var i = 0;i &#x3c; query.length;i++){
+
+    // update char values
+    prevChar = char; char = nextChar; nextChar = query.charAt(i + 1);
+    pos = i - partOffset
+
+    // root query check
+    if (pos === 0 &#x26;&#x26; (char !== &#x27;:&#x27; &#x26;&#x26; char !== &#x27;.&#x27;)){
+      result.push({root:true})
+    }
+
+    // parent query check
+    if (pos === 0 &#x26;&#x26; (char === &#x27;.&#x27; &#x26;&#x26; nextChar === &#x27;.&#x27;)){
+      result.push({parent:true})
+    }
+
+    var token = tokens[char]
+    if (token){
+
+      // set mode
+      if (depth === 0 &#x26;&#x26; (token.mode || token.open)){
+        handleBuffer()
+        mode = token.mode || token.open
+      }
+
+      if (depth === 0 &#x26;&#x26; token.handle){
+        handleBuffer()
+        handlers[token.handle]()
+      }
+
+      if (token.open){
+        depth += 1
+      } else if (token.close){
+        depth -= 1
+      }
+
+      // reset mode to get
+      if (depth === 0 &#x26;&#x26; token.close){
+        handleBuffer()
+      }
+
+    }
+
+    bEnd = i + 1
+
+  }
+
+  handleBuffer()
+  return result
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
 
