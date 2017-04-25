@@ -1,6 +1,6 @@
 # npmdoc-json-query
 
-#### api documentation for  [json-query (v2.2.2)](http://github.com/mmckegg/json-query)  [![npm package](https://img.shields.io/npm/v/npmdoc-json-query.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-json-query) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-json-query.svg)](https://travis-ci.org/npmdoc/node-npmdoc-json-query)
+#### basic api documentation for  [json-query (v2.2.2)](http://github.com/mmckegg/json-query)  [![npm package](https://img.shields.io/npm/v/npmdoc-json-query.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-json-query) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-json-query.svg)](https://travis-ci.org/npmdoc/node-npmdoc-json-query)
 
 #### Retrieves values from JSON objects for data binding. Offers params, nested queries, deep queries, custom reduce/filter functions and simple boolean logic. Browserify compatible.
 
@@ -90,7 +90,8 @@
             "iexplore/9.0..latest"
         ]
     },
-    "version": "2.2.2"
+    "version": "2.2.2",
+    "bin": {}
 }
 ```
 

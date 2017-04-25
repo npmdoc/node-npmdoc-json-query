@@ -1,7 +1,7 @@
 {
     "author": "kai zhu <kaizhu256@gmail.com>",
     "buildNpmdoc": "json-query",
-    "description": "#### api documentation for  [json-query (v2.2.2)](http://github.com/mmckegg/json-query)  [![npm package](https://img.shields.io/npm/v/npmdoc-json-query.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-json-query) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-json-query.svg)](https://travis-ci.org/npmdoc/node-npmdoc-json-query)",
+    "description": "#### basic api documentation for  [json-query (v2.2.2)](http://github.com/mmckegg/json-query)  [![npm package](https://img.shields.io/npm/v/npmdoc-json-query.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-json-query) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-json-query.svg)](https://travis-ci.org/npmdoc/node-npmdoc-json-query)",
     "devDependencies": {
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
         "json-query": "*",
@@ -36,5 +36,5 @@
         "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
         "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
-    "version": "0.0.2"
+    "version": "2017.4.25"
 }
